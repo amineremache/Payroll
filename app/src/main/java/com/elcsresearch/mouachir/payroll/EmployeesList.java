@@ -39,7 +39,7 @@ public class EmployeesList extends AppCompatActivity implements LoadJSONTask.Lis
 
     private ListView mListView;
 
-    public static final String URL = "https://127.0.0.1:8000/mobile/";
+    public static final String URL = "http://10.0.2.2:8000/mobile/";
 
     private List<HashMap<String, String>> mEmployeesMapList = new ArrayList<>();
 
