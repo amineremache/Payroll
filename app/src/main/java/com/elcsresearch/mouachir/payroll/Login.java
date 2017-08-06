@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Comparator;
-
 public class Login extends AppCompatActivity {
 
     @Override
@@ -23,11 +21,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String username = "root", password = "root";
+                String username = "", password = "";  // THIS IS FOR TEST
 
                 if ( username.equals(((EditText)findViewById(R.id.login_username)).getText().toString()) &&
                         password.equals(((EditText)findViewById(R.id.login_password)).getText().toString())) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), Main.class);
                     startActivity(intent);
                     finish();
                 }

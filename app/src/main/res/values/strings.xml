@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Payroll</string>
-    <string name="mian_activity">Main</string>
+    <string name="emp_list_activity">Employees List</string>
+    <string name="config_activity">Configurations</string>
+    <string name="detail_activity">Details</string>
+    <string name="emp_payrolls_activity">Employee\'s Payrolls</string>
+    <string name="history_activity">Payment history</string>
+    <string name="stats_activity">Dashboard</string>
 </resources>

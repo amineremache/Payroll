@@ -1,5 +1,9 @@
 package com.elcsresearch.mouachir.payroll;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -16,6 +20,18 @@ public class Employee {
         this.first_name=fname;
         this.last_name=lname;
 
+    }
+
+    public Employee(JSONObject object){
+
+        try {
+
+            this.last_name = object.getString("LastName");
+            this.first_name = object.getString("FirstName");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getLast_name () {
@@ -37,4 +53,22 @@ public class Employee {
 
         return list;
     }
-}
+
+    public static ArrayList<Employee> fromJSON (JSONArray jsonObjects) {
+        ArrayList<Employee> emps = new ArrayList<Employee>();
+        for ( int i =0; i < jsonObjects.length();i++) {
+            try {
+                emps.add(new Employee(jsonObjects.getJSONObject(i)));
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+            }
+            }
+
+            return emps;
+        }
+
+
+
+    }
+
