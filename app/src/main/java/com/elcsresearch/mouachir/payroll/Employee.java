@@ -14,20 +14,15 @@ public class Employee {
 
     private String last_name ;
     private String first_name;
+    private String birth_date;
 
-    public Employee (String lname, String fname) {
-
-        this.first_name=fname;
-        this.last_name=lname;
-
-    }
-
-    public Employee(JSONObject object){
+    public Employee(JSONObject obj){
 
         try {
 
-            this.last_name = object.getString("LastName");
-            this.first_name = object.getString("FirstName");
+            this.last_name = obj.getString("LastName");
+            this.first_name = obj.getString("FirstName");
+            this.birth_date = obj.getString("BDate");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -44,31 +39,10 @@ public class Employee {
         return this.first_name;
     }
 
-    public static ArrayList<Employee> getEmployees () {
+    public String getBirth_date() {
 
-        Employee user = new Employee("Amine","Remache");
-        ArrayList<Employee> list = new ArrayList<Employee>();
-        list.add(user);
-        list.add(new Employee("Mounir","Remache"));
-
-        return list;
+        return this.birth_date;
     }
-
-    public static ArrayList<Employee> fromJSON (JSONArray jsonObjects) {
-        ArrayList<Employee> emps = new ArrayList<Employee>();
-        for ( int i =0; i < jsonObjects.length();i++) {
-            try {
-                emps.add(new Employee(jsonObjects.getJSONObject(i)));
-            }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
-            }
-
-            return emps;
-        }
-
-
 
     }
 
