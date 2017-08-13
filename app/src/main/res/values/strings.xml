@@ -6,4 +6,10 @@
     <string name="emp_payrolls_activity">Employee\'s Payrolls</string>
     <string name="history_activity">Payment history</string>
     <string name="stats_activity">Dashboard</string>
+    <string name="title_activity_main">Mouachir Payroll</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

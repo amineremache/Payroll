@@ -1,6 +1,7 @@
 package com.elcsresearch.mouachir.payroll;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,42 +11,25 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
-import org.json.JSONTokener;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import static android.R.id.input;
 
 public class EmployeesList extends AppCompatActivity  {
 
     private String TAG = EmployeesList.class.getSimpleName();
-
-    private ProgressDialog pDialog;
     private ListView listView;
 
-    private static String url = "http://10.0.2.2:8000/mobile";
+    private static String url = "http://192.168.1.7:8000/mobile";
 
     ArrayList<HashMap<String, String>> employeesList;
 
+    private ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +37,23 @@ public class EmployeesList extends AppCompatActivity  {
         getSupportActionBar().setTitle(R.string.emp_list_activity);
 
         employeesList = new ArrayList<>();
-        listView = (ListView) findViewById(R.id.list_of_employees);
+        listView = (ListView) findViewById(R.id.activity_list_of_employees);
 
         new GetEmployees().execute();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent empDetail = new Intent(getApplicationContext(),EmployeeDetail.class);
+
+
+                empDetail.putExtra("Employee",employeesList.get(0));
+
+
+                startActivity(empDetail);
+            }
+        });
     }
 
 

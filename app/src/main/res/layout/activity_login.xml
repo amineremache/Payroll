@@ -24,42 +24,40 @@
         android:layout_gravity="center"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:weightSum="100"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
 
-        <TextView
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            android:text="Username/Email"
-            android:gravity="center"/>
+            app:fletPaddingBottom="10dp">
+
         <EditText
             android:id="@+id/login_username"
             android:layout_width="match_parent"
-            android:layout_weight="30"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="100"
-        android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:hint="Username"/>
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-        <TextView
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
-            android:layout_weight="70"
             android:layout_height="wrap_content"
-            android:text="Password"
-            android:gravity="center"/>
-        <EditText
-            android:id="@+id/login_password"
-            android:layout_width="match_parent"
-            android:layout_weight="30"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            app:fletPaddingBottom="10dp"
+            >
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"/>
+
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
 
     </LinearLayout>
 
