@@ -189,7 +189,7 @@ public class TabEmployeesList extends Fragment {
                         employeeMap.put("FirstName", fname);
                         employeeMap.put("BDate", bdate);
 
-                        // adding employee to employees list
+                        // adding employee (HashMap) to employees' list (ArrayList)
                         employeesList.add(employeeMap);
                     }
 
