@@ -29,6 +29,10 @@
         <activity
             android:name=".Main"
             android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NavigationMain"
+            android:label="@string/title_activity_navigation_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

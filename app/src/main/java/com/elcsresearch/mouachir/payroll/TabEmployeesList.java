@@ -51,7 +51,7 @@ public class TabEmployeesList extends Fragment {
     private String TAG = EmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.7:8000/mobile";
+    private static String url = "https://192.168.1.7:8000/mobile";
 
     ArrayList<HashMap<String, String>> employeesList;
 
@@ -135,7 +135,7 @@ public class TabEmployeesList extends Fragment {
                 Intent empDetail = new Intent(getContext(),EmployeeDetail.class);
 
 
-                empDetail.putExtra("Employee",employeesList.get(0));
+                empDetail.putExtra("Employee",employeesList.get(i));
 
 
                 startActivity(empDetail);
@@ -203,10 +203,10 @@ public class TabEmployeesList extends Fragment {
                 }
             } else {
                 Log.e(TAG, "Couldn't get JSON from server.");
-                Toast.makeText(getContext(),
+                /*Toast.makeText(getContext(),
                         "Couldn't get JSON from server. Check LogCat for possible errors!",
                         Toast.LENGTH_LONG)
-                        .show();
+                        .show();*/
             }
 
             return null;

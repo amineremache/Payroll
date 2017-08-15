@@ -25,7 +25,7 @@ public class Login extends AppCompatActivity {
 
                 if ( username.equals(((EditText)findViewById(R.id.login_username)).getText().toString()) &&
                         password.equals(((EditText)findViewById(R.id.login_password)).getText().toString())) {
-                    Intent intent = new Intent(getApplicationContext(), Main.class);
+                    Intent intent = new Intent(getApplicationContext(), NavigationMain.class);
                     startActivity(intent);
                     finish();
                 }
