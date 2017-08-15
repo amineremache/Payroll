@@ -51,7 +51,7 @@ public class TabEmployeesList extends Fragment {
     private String TAG = EmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "https://192.168.1.7:8000/mobile";
+    private static String url = "http://192.168.1.7:8000/mobile";
 
     ArrayList<HashMap<String, String>> employeesList;
 

@@ -8,4 +8,11 @@
     tools:context="com.elcsresearch.mouachir.payroll.NavigationMain"
     tools:showIn="@layout/app_bar_navigation_main">
 
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

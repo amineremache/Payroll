@@ -80,7 +80,7 @@ public class Main extends AppCompatActivity implements TabEmployeesList.OnFragme
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.mymenu_settings) {
             return true;
         }
 
