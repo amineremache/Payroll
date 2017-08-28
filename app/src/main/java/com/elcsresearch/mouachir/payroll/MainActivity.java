@@ -27,16 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         btn_list.setOnClickListener(btn_list_listner);
 
-        Button btn_history = (Button) findViewById(R.id.btn_history);
-        View.OnClickListener btn_history_listner = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),PaymentHistoy.class);
-                startActivity(intent);
-            }
-        };
-
-        btn_history.setOnClickListener(btn_history_listner);
 
 
     }

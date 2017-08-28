@@ -51,7 +51,8 @@ public class TabEmployeesList extends Fragment {
     private String TAG = EmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.7:8000/mobile";
+    private static String url = "http://192.168.1.5:5000/gpaie/GestionDesEmployes/JSONList";
+    //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
 
     ArrayList<HashMap<String, String>> employeesList;
 
@@ -175,10 +176,15 @@ public class TabEmployeesList extends Fragment {
 
                         JSONObject JSONObj_iterator = employees.getJSONObject(i);
 
-                        String id = JSONObj_iterator.getString("id");
+                        String id = JSONObj_iterator.getString("matricule_interne");
+                        String lname = JSONObj_iterator.getString("nom");
+                        String fname = JSONObj_iterator.getString("prenom");
+                        String bdate = JSONObj_iterator.getString("date_naiss");
+
+                        /*String id = JSONObj_iterator.getString("id");
                         String lname = JSONObj_iterator.getString("last_name");
                         String fname = JSONObj_iterator.getString("first_name");
-                        String bdate = JSONObj_iterator.getString("birth_date");
+                        String bdate = JSONObj_iterator.getString("birth_date");*/
 
                         // tmp hash map for single employee
                         HashMap<String, String> employeeMap = new HashMap<>();

@@ -19,7 +19,6 @@
         </activity>
         <activity android:name=".EmployeesList" />
         <activity android:name=".EmployeeDetail" />
-        <activity android:name=".PaymentHistoy" />
         <activity android:name=".EmployeePayrolls" />
         <activity android:name=".MainActivity" />
         <activity
