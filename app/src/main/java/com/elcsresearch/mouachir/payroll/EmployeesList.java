@@ -157,7 +157,7 @@ public class EmployeesList extends AppCompatActivity  {
                     employeesList,
                     R.layout.item_employee,
                     new String[]{"LastName", "FirstName", "BDate"},
-                    new int[] {R.id.emp_lname, R.id.emp_fname, R.id.emp_bdate});
+                    new int[] {R.id.emp_nom, R.id.emp_prenom, R.id.emp_date_naiss});
 
             listView.setAdapter(adapter);
         }

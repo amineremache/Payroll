@@ -45,13 +45,10 @@ public class TabEmployeesList extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-
-
     private String TAG = EmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.5:5000/gpaie/GestionDesEmployes/JSONList";
+    private static String url = "http://192.168.1.3:8000/gpaie/GestionDesEmployes/JSONList";
     //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
 
     ArrayList<HashMap<String, String>> employeesList;
@@ -176,24 +173,37 @@ public class TabEmployeesList extends Fragment {
 
                         JSONObject JSONObj_iterator = employees.getJSONObject(i);
 
-                        String id = JSONObj_iterator.getString("matricule_interne");
-                        String lname = JSONObj_iterator.getString("nom");
-                        String fname = JSONObj_iterator.getString("prenom");
-                        String bdate = JSONObj_iterator.getString("date_naiss");
-
-                        /*String id = JSONObj_iterator.getString("id");
-                        String lname = JSONObj_iterator.getString("last_name");
-                        String fname = JSONObj_iterator.getString("first_name");
-                        String bdate = JSONObj_iterator.getString("birth_date");*/
+                        String matricule_interne = JSONObj_iterator.getString("matricule_interne");
+                        String nom = JSONObj_iterator.getString("nom");
+                        String prenom = JSONObj_iterator.getString("prenom");
+                        String date_naiss = JSONObj_iterator.getString("date_naiss");
+                        String bureau = JSONObj_iterator.getString("bureau");
+                        String Email = JSONObj_iterator.getString("Email");
+                        String tel_bureau = JSONObj_iterator.getString("tel_bureau");
+                        String date_entree = JSONObj_iterator.getString("date_entree");
+                        String departement = JSONObj_iterator.getString("departement");
+                        String post_trav = JSONObj_iterator.getString("post_trav");
+                        String affect = JSONObj_iterator.getString("affect");
+                        String sal_Horaire = JSONObj_iterator.getString("sal_Horaire");
+                        String adresse = JSONObj_iterator.getString("adresse");
+                        String lieu_naiss = JSONObj_iterator.getString("lieu_naiss");
+                        String tel_perso = JSONObj_iterator.getString("tel_perso");
+                        String sexe = JSONObj_iterator.getString("sexe");
+                        String sit_famil = JSONObj_iterator.getString("sit_famil");
+                        String nbr_enfant = JSONObj_iterator.getString("nbr_enfant");
+                        String nationalite = JSONObj_iterator.getString("nationalite");
+                        String nss = JSONObj_iterator.getString("nss");
+                        String nccp = JSONObj_iterator.getString("nccp");
+                        String entr = JSONObj_iterator.getString("entr");
 
                         // tmp hash map for single employee
                         HashMap<String, String> employeeMap = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        employeeMap.put("PK",id);
-                        employeeMap.put("LastName", lname);
-                        employeeMap.put("FirstName", fname);
-                        employeeMap.put("BDate", bdate);
+                        employeeMap.put("matricule_interne",matricule_interne);
+                        employeeMap.put("nom", nom);
+                        employeeMap.put("prenom", prenom);
+                        employeeMap.put("date_naiss", date_naiss);
 
                         // adding employee (HashMap) to employees' list (ArrayList)
                         employeesList.add(employeeMap);
@@ -230,8 +240,8 @@ public class TabEmployeesList extends Fragment {
                     getContext(),
                     employeesList,
                     R.layout.item_employee,
-                    new String[]{"PK" , "LastName", "FirstName", "BDate"},
-                    new int[] {R.id.emp_id, R.id.emp_lname, R.id.emp_fname, R.id.emp_bdate});
+                    new String[]{"matricule_interne" , "nom", "prenom", "date_naiss"},
+                    new int[] {R.id.emp_matricule_interne, R.id.emp_nom, R.id.emp_prenom, R.id.emp_date_naiss});
 
             listView.setAdapter(adapter);
         }

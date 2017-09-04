@@ -22,9 +22,9 @@ public class EmployeeDetail extends AppCompatActivity {
         TextView fname = (TextView) findViewById(R.id.emp_det_fname);
         TextView bdate = (TextView) findViewById(R.id.emp_det_bdate);
 
-        lname.setText(myEmp.get("LastName"));
-        fname.setText(myEmp.get("FirstName"));
-        bdate.setText(myEmp.get("BDate"));
+        lname.setText(myEmp.get("nom"));
+        fname.setText(myEmp.get("prenom"));
+        bdate.setText(myEmp.get("date_naiss"));
 
     }
 }

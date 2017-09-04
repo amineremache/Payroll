@@ -6,22 +6,22 @@
 
 
     <TextView
-        android:id="@+id/emp_id"
+        android:id="@+id/emp_matricule_interne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/emp_lname"
+        android:id="@+id/emp_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/emp_fname"
+        android:id="@+id/emp_prenom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/emp_bdate"
+        android:id="@+id/emp_date_naiss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
