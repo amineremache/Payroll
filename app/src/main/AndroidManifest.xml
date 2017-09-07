@@ -17,18 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmployeesList" />
         <activity android:name=".EmployeeDetail" />
         <activity android:name=".EmployeePayrolls" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".Main"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".NavigationMainLiveo"
-            android:label="@string/title_activity_navigation_main"
-            android:theme="@style/nLiveoDrawer"/>
+        <activity android:name=".ScrollingActivity"/>
         <activity
             android:name=".NavigationMain"
             android:label="@string/title_activity_navigation_main"

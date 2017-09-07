@@ -45,11 +45,13 @@ public class TabEmployeesList extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private String TAG = EmployeesList.class.getSimpleName();
+    private String TAG = TabEmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.3:8000/gpaie/GestionDesEmployes/JSONList";
+    private static String url = "http://192.168.1.5:5000/gpaie/GestionDesEmployes/ListeEmployeJSON";
     //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
+
+    private static String urlPointage = "http://192.168.1.5:5000/gpaie/GestionDesEmployes/ListeDernierPointageJSON/";
 
     ArrayList<HashMap<String, String>> employeesList;
 
@@ -130,7 +132,7 @@ public class TabEmployeesList extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent empDetail = new Intent(getContext(),EmployeeDetail.class);
+                Intent empDetail = new Intent(getContext(),ScrollingActivity.class);
 
 
                 empDetail.putExtra("Employee",employeesList.get(i));
@@ -196,6 +198,27 @@ public class TabEmployeesList extends Fragment {
                         String nccp = JSONObj_iterator.getString("nccp");
                         String entr = JSONObj_iterator.getString("entr");
 
+
+                        // get last pointage with another url request
+
+                        String urlPointageEmp = url + nom + "/" + prenom ;
+
+                        HttpHandler pointageHandler = new HttpHandler();
+
+                        // Making a request to url and getting response
+                        String pointageStr = pointageHandler.makeServiceCall(urlPointageEmp);
+
+                        Log.e(TAG, "Response from url :\n " + pointageStr);
+                        JSONObject obj = null;
+
+                        if (pointageStr!=null) {
+
+                            obj = new JSONObject(pointageStr);
+
+                        }
+
+                        String date = obj.getString("date");
+
                         // tmp hash map for single employee
                         HashMap<String, String> employeeMap = new HashMap<>();
 
@@ -204,9 +227,32 @@ public class TabEmployeesList extends Fragment {
                         employeeMap.put("nom", nom);
                         employeeMap.put("prenom", prenom);
                         employeeMap.put("date_naiss", date_naiss);
+                        employeeMap.put("bureau",bureau);
+                        employeeMap.put("Email",Email);
+                        employeeMap.put("tel_bureau",tel_bureau);
+                        employeeMap.put("date_entree",date_entree);
+                        employeeMap.put("departement",departement);
+                        employeeMap.put("post_trav",post_trav);
+                        employeeMap.put("affect",affect);
+                        employeeMap.put("sal_Horaire",sal_Horaire);
+                        employeeMap.put("adresse",adresse);
+                        employeeMap.put("lieu_naiss",lieu_naiss);
+                        employeeMap.put("tel_perso",tel_perso);
+                        employeeMap.put("sexe",sexe);
+                        employeeMap.put("sit_famil",sit_famil);
+                        employeeMap.put("nbr_enfant",nbr_enfant);
+                        employeeMap.put("nationalite",nationalite);
+                        employeeMap.put("nss",nss);
+                        employeeMap.put("nccp",nccp);
+                        employeeMap.put("entr",entr);
+                        employeeMap.put("last_pointage",date);
+
+
 
                         // adding employee (HashMap) to employees' list (ArrayList)
                         employeesList.add(employeeMap);
+
+
                     }
 
                 } catch (final JSONException e) {
@@ -240,7 +286,7 @@ public class TabEmployeesList extends Fragment {
                     getContext(),
                     employeesList,
                     R.layout.item_employee,
-                    new String[]{"matricule_interne" , "nom", "prenom", "date_naiss"},
+                    new String[]{"matricule_interne" , "nom", "prenom", "last_pointage"},
                     new int[] {R.id.emp_matricule_interne, R.id.emp_nom, R.id.emp_prenom, R.id.emp_date_naiss});
 
             listView.setAdapter(adapter);

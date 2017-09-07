@@ -7,22 +7,20 @@
     android:orientation="vertical"
     tools:context="com.elcsresearch.mouachir.payroll.EmployeeDetail">
 
+        <TextView
+            android:id="@+id/emp_det_lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
-    <TextView
-        android:id="@+id/emp_det_lname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/emp_det_fname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-
-    <TextView
-        android:id="@+id/emp_det_fname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/emp_det_bdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/emp_det_bdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 </LinearLayout>
