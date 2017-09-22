@@ -23,17 +23,10 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrolling);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Last check : 25-09-2017, 15:43", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
-        HashMap< String,String > myEmp = (HashMap<String,String>) getIntent().getSerializableExtra("Employee");
+
+        final HashMap< String,String > myEmp = (HashMap<String,String>) getIntent().getSerializableExtra("Employee");
 
         TextView tv_num_bureau = (TextView) findViewById(R.id.tv_num_bureau);
         TextView tv_num_mobile = (TextView) findViewById(R.id.tv_num_mobile);
@@ -51,5 +44,15 @@ public class ScrollingActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle((myEmp.get("nom")+" "+myEmp.get("prenom")).toUpperCase());
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Last check : " + myEmp.get("last_pointage"), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
     }
 }

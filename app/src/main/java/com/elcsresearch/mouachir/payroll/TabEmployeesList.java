@@ -201,7 +201,7 @@ public class TabEmployeesList extends Fragment {
 
                         // get last pointage with another url request
 
-                        String urlPointageEmp = url + nom + "/" + prenom ;
+                        String urlPointageEmp = urlPointage + nom + "/" + prenom ;
 
                         HttpHandler pointageHandler = new HttpHandler();
 
@@ -210,14 +210,16 @@ public class TabEmployeesList extends Fragment {
 
                         Log.e(TAG, "Response from url :\n " + pointageStr);
                         JSONObject obj = null;
+                        String date = null ;
 
                         if (pointageStr!=null) {
 
                             obj = new JSONObject(pointageStr);
+                            date = obj.getString("date");
 
                         }
 
-                        String date = obj.getString("date");
+
 
                         // tmp hash map for single employee
                         HashMap<String, String> employeeMap = new HashMap<>();
