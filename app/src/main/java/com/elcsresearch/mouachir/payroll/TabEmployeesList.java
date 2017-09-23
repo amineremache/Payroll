@@ -48,12 +48,13 @@ public class TabEmployeesList extends Fragment {
     private String TAG = TabEmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.10:8000/payroll/ListeEmployeJSON";
+    private static String url = "http://192.168.1.5:8000/payroll/ListeEmployeJSON";
     //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
 
-    private static String urlPointage = "http://192.168.1.10:8000/payroll/DernierPointageJSON/";
+    private static String urlPointage = "http://192.168.1.5:8000/payroll/DernierPointageJSON/";
 
     ArrayList<HashMap<String, String>> employeesList;
+    ArrayList<Employee> EmployeesList;
 
 
     public TabEmployeesList() {
@@ -170,6 +171,8 @@ public class TabEmployeesList extends Fragment {
                     JSONArray employees = jsonObj.getJSONArray("Employees");
 
                     // looping through All Employees
+
+                    EmployeesList = Employee.fromJSONArr(employees);
 
                     for (int i = 0; i < employees.length(); i++) {
 

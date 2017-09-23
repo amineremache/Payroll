@@ -12,18 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/myTheme">
         <activity android:name=".Login">
-            <intent-filter>
+            <!--intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter-->
         </activity>
         <activity android:name=".EmployeeDetail" />
         <activity android:name=".EmployeePayrolls" />
-        <activity android:name=".ScrollingActivity"/>
+        <activity android:name=".ScrollingActivity" />
         <activity
             android:name=".NavigationMain"
             android:label="@string/title_activity_navigation_main"
-            android:theme="@style/myTheme.NoActionBar"/>
+            android:theme="@style/myTheme.NoActionBar" />
+        <activity android:name=".Login2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
