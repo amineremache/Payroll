@@ -1,6 +1,5 @@
 package com.elcsresearch.mouachir.payroll;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -25,14 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link TabEmployeesList.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link TabEmployeesList#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class TabEmployeesList extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,10 +40,10 @@ public class TabEmployeesList extends Fragment {
     private String TAG = TabEmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.5:8000/payroll/ListeEmployeJSON";
+    private static String url = "http://192.168.1.122:8000/payroll/ListeEmployeJSON";
     //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
 
-    private static String urlPointage = "http://192.168.1.5:8000/payroll/DernierPointageJSON/";
+    private static String urlPointage = "http://192.168.1.122:8000/payroll/DernierPointageJSON/";
 
     ArrayList<HashMap<String, String>> employeesList;
     ArrayList<Employee> EmployeesList;
@@ -61,14 +53,6 @@ public class TabEmployeesList extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TabEmployeesList.
-     */
     // TODO: Rename and change types and number of parameters
     public static TabEmployeesList newInstance(String param1, String param2) {
         TabEmployeesList fragment = new TabEmployeesList();
@@ -127,7 +111,9 @@ public class TabEmployeesList extends Fragment {
         employeesList = new ArrayList<>();
         listView = (ListView) getActivity().findViewById(R.id.frag_emp_list);
 
+
         new GetEmployees().execute();
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -151,15 +137,16 @@ public class TabEmployeesList extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
+
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url);
-
+            String jsonStr = sh.getJSONList(url);
             Log.e(TAG, "Response from url :\n " + jsonStr);
 
             if (jsonStr != null) {
@@ -173,6 +160,7 @@ public class TabEmployeesList extends Fragment {
                     // looping through All Employees
 
                     EmployeesList = Employee.fromJSONArr(employees);
+                    Log.e(TAG, "" + EmployeesList.get(1).getNom() + " " + EmployeesList.get(1).getPrenom() );
 
                     for (int i = 0; i < employees.length(); i++) {
 
@@ -209,7 +197,7 @@ public class TabEmployeesList extends Fragment {
                         HttpHandler pointageHandler = new HttpHandler();
 
                         // Making a request to url and getting response
-                        String pointageStr = pointageHandler.makeServiceCall(urlPointageEmp);
+                        String pointageStr = pointageHandler.getJSONList(urlPointageEmp);
 
                         Log.e(TAG, "Response from url :\n " + pointageStr);
                         JSONObject obj = null;
@@ -270,10 +258,10 @@ public class TabEmployeesList extends Fragment {
                 }
             } else {
                 Log.e(TAG, "Couldn't get JSON from server.");
-                /*Toast.makeText(getContext(),
+                Toast.makeText(getContext(),
                         "Couldn't get JSON from server. Check LogCat for possible errors!",
                         Toast.LENGTH_LONG)
-                        .show();*/
+                        .show();
             }
 
             return null;
@@ -283,9 +271,6 @@ public class TabEmployeesList extends Fragment {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            /**
-             * Updating parsed JSON data into ListView
-             * */
             ListAdapter adapter = new SimpleAdapter(
 
                     getContext(),
@@ -299,17 +284,6 @@ public class TabEmployeesList extends Fragment {
 
     }
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

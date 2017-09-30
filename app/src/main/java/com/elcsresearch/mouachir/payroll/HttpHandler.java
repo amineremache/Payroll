@@ -23,7 +23,7 @@ public class HttpHandler {
     public HttpHandler() {
     }
 
-    public String makeServiceCall(String reqUrl) {
+    public String getJSONList(String reqUrl) {
 
         String response = null;
 
@@ -48,6 +48,39 @@ public class HttpHandler {
         }
 
         return response;
+    }
+
+
+
+    public String postJSONCreds() {
+
+        String response = null;
+
+
+        try
+        {
+            URL url = new URL("http://192.168.1.122:8000/payroll/ListeEmployeJSON/");
+            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
+
+            urlConn.setDoOutput(true);
+            urlConn.setRequestMethod("GET");
+            urlConn.setRequestProperty("Accept", "application/json");
+            urlConn.setRequestProperty("username", "admin@admin.com");
+            urlConn.setRequestProperty("password", "admin");
+            urlConn.connect();
+            InputStream in = new BufferedInputStream(urlConn.getInputStream());
+            response = convertStreamToString(in);
+            urlConn.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return response;
+
     }
 
     private String convertStreamToString(InputStream is) {

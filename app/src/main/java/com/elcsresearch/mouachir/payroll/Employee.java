@@ -12,7 +12,95 @@ import java.util.ArrayList;
 
 public class Employee {
 
-     private String matricule_interne;
+    public String getMatricule_interne() {
+        return matricule_interne;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getDate_naiss() {
+        return date_naiss;
+    }
+
+    public String getBureau() {
+        return bureau;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public String getTel_bureau() {
+        return tel_bureau;
+    }
+
+    public String getDate_entree() {
+        return date_entree;
+    }
+
+    public String getDepartement() {
+        return departement;
+    }
+
+    public String getPost_trav() {
+        return post_trav;
+    }
+
+    public String getAffect() {
+        return affect;
+    }
+
+    public String getSal_Horaire() {
+        return sal_Horaire;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getLieu_naiss() {
+        return lieu_naiss;
+    }
+
+    public String getTel_perso() {
+        return tel_perso;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public String getSit_famil() {
+        return sit_famil;
+    }
+
+    public String getNbr_enfant() {
+        return nbr_enfant;
+    }
+
+    public String getNationalite() {
+        return nationalite;
+    }
+
+    public String getNss() {
+        return nss;
+    }
+
+    public String getNccp() {
+        return nccp;
+    }
+
+    public String getEntr() {
+        return entr;
+    }
+
+    private String matricule_interne;
      private String nom ;
      private String prenom ;
      private String date_naiss ;
@@ -71,9 +159,7 @@ public class Employee {
             return null;
         }
 
-
         return emp;
-
     }
 
 

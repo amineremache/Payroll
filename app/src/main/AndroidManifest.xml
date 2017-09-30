@@ -25,13 +25,6 @@
             android:name=".NavigationMain"
             android:label="@string/title_activity_navigation_main"
             android:theme="@style/myTheme.NoActionBar" />
-        <activity android:name=".Login2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
