@@ -17,8 +17,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -40,10 +46,10 @@ public class TabEmployeesList extends Fragment {
     private String TAG = TabEmployeesList.class.getSimpleName();
     private ListView listView;
 
-    private static String url = "http://192.168.1.122:8000/payroll/ListeEmployeJSON";
+    private static String url = "http://192.168.1.6:8000/payroll/ListeEmployeJSON";
     //private static String url ="https://peaceful-mesa-99911.herokuapp.com/mobile/";
 
-    private static String urlPointage = "http://192.168.1.122:8000/payroll/DernierPointageJSON/";
+    private static String urlPointage = "http://192.168.1.6:8000/payroll/DernierPointageJSON/";
 
     ArrayList<HashMap<String, String>> employeesList;
     ArrayList<Employee> EmployeesList;
@@ -132,6 +138,7 @@ public class TabEmployeesList extends Fragment {
     }
 
 
+
     private class GetEmployees extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -144,9 +151,32 @@ public class TabEmployeesList extends Fragment {
         protected Void doInBackground(Void... arg0) {
 
             HttpHandler sh = new HttpHandler();
+            JsonObjectRequest JsObjReq = new JsonObjectRequest
+                    (com.android.volley.Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                public void onResponse(JSONObject response) {
+
+
+                            // THIS IS FOR NEXT TIME TO TEST AND REPLACE THE LOOP WITH RESPONSE ATTRIBUTES
+                    Log.e(TAG, "Response VOLLEY: " + response.toString());
+
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // TODO Auto-generated method stub
+                    Log.e(TAG, "Response VOLLEY failed ");
+
+                }
+            });
+
+            MySingleton.getInstance(getContext()).addToRequestQueue(JsObjReq);
+
 
             // Making a request to url and getting response
-            String jsonStr = sh.getJSONList(url);
+            /*String jsonStr = sh.getJSONList(url);
             Log.e(TAG, "Response from url :\n " + jsonStr);
 
             if (jsonStr != null) {
@@ -199,7 +229,7 @@ public class TabEmployeesList extends Fragment {
                         // Making a request to url and getting response
                         String pointageStr = pointageHandler.getJSONList(urlPointageEmp);
 
-                        Log.e(TAG, "Response from url :\n " + pointageStr);
+                        Log.e(TAG, "Response from urlpointage :\n " + pointageStr);
                         JSONObject obj = null;
                         String date = null ;
 
@@ -262,7 +292,7 @@ public class TabEmployeesList extends Fragment {
                         "Couldn't get JSON from server. Check LogCat for possible errors!",
                         Toast.LENGTH_LONG)
                         .show();
-            }
+            }*/
 
             return null;
         }
@@ -288,4 +318,9 @@ public class TabEmployeesList extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+
+
 }

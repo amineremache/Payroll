@@ -32,6 +32,7 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'br.com.liveo:navigationdrawer-material:2.5.1'
+    compile 'com.android.volley:volley:1.0.0'
     testCompile 'junit:junit:4.12'
 }
 
